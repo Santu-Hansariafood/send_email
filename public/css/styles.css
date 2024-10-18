@@ -1,0 +1,83 @@
+:root {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    font-size: 1.6rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+label {
+    font-size: 1.6rem;
+    color: #555;
+}
+
+textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.6rem;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.5rem;
+}
+
+input[type="file"] {
+    font-size: 1.6rem;
+    padding: 1rem;
+}
+
+button {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.8rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    label,
+    textarea,
+    input[type="file"],
+    button {
+        font-size: 1.4rem;
+    }
+}

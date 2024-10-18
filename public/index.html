@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Excel File and Send Emails</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Upload Excel File and Send Emails</h1>
+        <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="emailTemplate">Email Template:</label>
+                <textarea id="emailTemplate" name="emailTemplate" rows="10" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="file">Upload Excel File:</label>
+                <input type="file" name="file" accept=".xlsx, .xls" required />
+            </div>
+            <button type="submit">Upload and Send Emails</button>
+        </form>
+
+        <div id="result" style="display: none;">
+            <p id="sentCount"></p>
+            <p id="failedCount"></p>
+        </div>
+
+        <div id="loading" style="display: none;">
+            <p>Sending emails...</p>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('uploadForm');
+        const resultDiv = document.getElementById('result');
+        const sentCountP = document.getElementById('sentCount');
+        const failedCountP = document.getElementById('failedCount');
+        const loadingDiv = document.getElementById('loading');
+
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            loadingDiv.style.display = 'block';
+
+            const formData = new FormData(form);
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            loadingDiv.style.display = 'none';
+            sentCountP.textContent = `Emails Sent: ${result.sentCount}`;
+            failedCountP.textContent = `Emails Failed: ${result.failedCount}`;
+            resultDiv.style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
